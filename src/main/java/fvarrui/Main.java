@@ -28,7 +28,7 @@ public class Main {
 		Map<String, Object> params = new HashMap<>();
 		params.put("ancho", 15);
 		params.put("alto", 6);
-		Double result = (Double) eval("Math.sqrt(ancho / alto)", params);
+		Double result = eval("Math.sqrt(ancho / alto)", params);
 		System.out.println(result);
 	}
 
