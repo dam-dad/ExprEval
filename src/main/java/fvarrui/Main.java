@@ -10,9 +10,18 @@ import static fvarrui.expreval.ExprEval.*;
 public class Main {
 	
 	public static void main(String[] args) {
+		sample0();
 		sample1();
 		sample2();
 		sample3();
+	}
+	
+	// hardcoded
+	private static void sample0() {
+		Double ancho = 15.0;
+		Double alto = 6.0;
+		Double result = Math.sqrt(ancho / alto);
+		System.out.println(result);
 	}
 
 	private static void sample1() {
@@ -24,13 +33,13 @@ public class Main {
 	}
 
 	private static void sample2() {
-		Double result = (Double) evaluate("Math.sqrt(ancho / alto)", param("ancho", 15), param("alto", 6));
+		Double result = eval("Math.sqrt(ancho / alto)", param("ancho", 15), param("alto", 6));
 		System.out.println(result);
 	}
 
 	private static void sample3() {
 		Param<?> [] params = { param("ancho", 15), param("alto", 6) };
-		Double result = (Double) evaluate("Math.sqrt(ancho / alto)", params);
+		Double result = eval("Math.sqrt(ancho / alto)", params);
 		System.out.println(result);
 	}
 	

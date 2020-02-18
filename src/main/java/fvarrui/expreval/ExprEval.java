@@ -17,16 +17,16 @@ public class ExprEval {
 		context.setLanguageVersion(Context.VERSION_ES6);
 	}
 	
-	public static Object eval(String expr, Map<String, Object> params) {
+	public static Double eval(String expr, Map<String, Object> params) {
 		ScriptableObject scope = context.initStandardObjects();
 		for (String key : params.keySet()) {
 			scope.put(key, scope, params.get(key));
 		}
 		Script script = context.compileString(expr, null, 0, null);
-		return script.exec(context, scope);
+		return (Double) script.exec(context, scope);
 	}
 	
-	public static Object evaluate(String expr, Param<?> ... params) {
+	public static Double eval(String expr, Param<?> ... params) {
 		Map<String,Object> map = 
 				Arrays
 					.asList(params)
@@ -34,7 +34,7 @@ public class ExprEval {
 					.collect(
 							Collectors.toMap(Param::getName, Param::getValue)
 					);
-		return eval(expr, map);
+		return (Double) eval(expr, map);
 	}
 	
 	public static <T> Param<T> param(String name, T value) {
